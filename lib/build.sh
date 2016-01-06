@@ -109,8 +109,8 @@ write_profile() {
 }
 
 install_sass() {
-  export GEM_HOME=$build_dir/.gem/ruby/2.2.0
-  export PATH=$GEM_HOME/bin:$PATH
+  export GEM_HOME=$build_dir/.gem/ruby/2.2.1
+  export PATH=$build_dir/.gem/ruby/2.2.0/bin:$PATH
 
   if test -d $cache_dir/ruby/.gem; then
     info "Restoring ruby gems directory from cache"
