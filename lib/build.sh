@@ -109,16 +109,17 @@ write_profile() {
 }
 
 install_sass() {
-  export GEM_HOME=$build_dir/.gem/ruby/2.2.1
-  export PATH=$build_dir/.gem/ruby/2.2.0/bin:$PATH
+  export GEM_HOME=$build_dir/.gem/ruby/2.2.0
+  export PATH=$GEM_HOME/bin:$PATH
 
   if test -d $cache_dir/ruby/.gem; then
     info "Restoring ruby gems directory from cache"
     cp -r $cache_dir/ruby/.gem $build_dir
-    HOME=$build_dir gem update sass --user-install --no-rdoc --no-ri
+    HOME=$build_dir gem uninstall sass
+    HOME=$build_dir gem install sass -v 3.4.19 --user-install --no-rdoc --no-ri
     HOME=$build_dir gem install compass --user-install --no-rdoc --no-ri
   else
-    HOME=$build_dir gem install sass --user-install --no-rdoc --no-ri
+    HOME=$build_dir gem install sass -v 3.4.19 --user-install --no-rdoc --no-ri
     HOME=$build_dir gem install compass --user-install --no-rdoc --no-ri
   fi
 
